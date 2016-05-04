@@ -31,7 +31,7 @@ public class ObservableObjectFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         final User user = new User("Nagaraj", "Wadakannavar");
         binding.setUser(user);
-        getView().findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+        binding.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText editText = (EditText) getView().findViewById(R.id.edit_text);

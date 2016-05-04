@@ -16,18 +16,23 @@
         tools:context="com.example.databinding.ui.ObservableObjectFragment">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@{person.firstName,default=PLACEHOLDER}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@{person.firstName}" />
+            android:text="@{person.lastName,default=wadakannavar}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@{person.lastName}" />
+            android:text="@{String.valueOf(person.age)}" />
 
         <EditText
             android:id="@+id/edit_text"

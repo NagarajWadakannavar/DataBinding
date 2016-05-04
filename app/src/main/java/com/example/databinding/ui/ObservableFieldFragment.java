@@ -33,8 +33,8 @@ public class ObservableFieldFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final Person person = new Person("Nagaraj", "Wadakannavar", 26);
-        binding.setPerson(person);
-        getView().findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+         binding.setPerson(person);
+        binding.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText editText = (EditText) getView().findViewById(R.id.edit_text);
