@@ -11,13 +11,13 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Observable Objects" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/observable_field"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="observable Field" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/recycler_view"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="RecyclerView" />
     </group>
 
     <item android:title="Communicate">

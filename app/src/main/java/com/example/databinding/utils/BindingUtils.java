@@ -22,6 +22,16 @@ public class BindingUtils {
         requestCreator.into(view);
     }
 
+    @BindingAdapter(value = {"imageURL", "placeHolder"}, requireAll = false)
+    public static void loadImage(ImageView view, String url, Drawable placeHolder) {
+        RequestCreator requestCreator =
+                Picasso.with(view.getContext()).load("http://fillmurray.com/400/400");
+        if (placeHolder != null) {
+            requestCreator.placeholder(placeHolder);
+        }
+        requestCreator.into(view);
+    }
+
     @BindingAdapter({"imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {
         Picasso.with(view.getContext()).load(imageUrl).into(view);

@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.databinding.ui.ObservableFieldFragment;
 import com.example.databinding.ui.ObservableObjectFragment;
+import com.example.databinding.ui.RecyclerViewFragment;
 import com.example.databinding.ui.SimpleFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -89,6 +91,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.observable_object:
                 replaceFragment(new ObservableObjectFragment());
+                break;
+            case R.id.observable_field:
+                replaceFragment(new ObservableFieldFragment());
+                break;
+            case R.id.recycler_view:
+                replaceFragment(new RecyclerViewFragment());
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
