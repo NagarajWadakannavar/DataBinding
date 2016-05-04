@@ -1,6 +1,7 @@
 package com.example.databinding.ui;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.databinding.R;
 import com.example.databinding.api.StackOverflowAPI;
+import com.example.databinding.databinding.FragmentRecyclerViewBinding;
 import com.example.databinding.model.Questions;
 import com.example.databinding.ui.adapter.RecyclerViewAdapter;
 import com.example.databinding.utils.Constants;
@@ -31,7 +33,7 @@ import retrofit2.Response;
 
 /**
  * A fragment representing a list of Items.
- * <p/>
+ * <p>
  */
 public class RecyclerViewFragment extends Fragment implements Constants.Listener<Questions.Question> {
 
@@ -39,17 +41,14 @@ public class RecyclerViewFragment extends Fragment implements Constants.Listener
     private StackOverflowAPI api;
     private Call<Questions> call;
     private List<Questions.Question> questionList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
 
+    private FragmentRecyclerViewBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.list);
-        progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
-        return view;
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -57,11 +56,11 @@ public class RecyclerViewFragment extends Fragment implements Constants.Listener
         super.onActivityCreated(savedInstanceState);
         api = ServiceGenerator.createService(StackOverflowAPI.class);
         downloadQuestions(api.downloadQuestions());
-        recyclerView.setAdapter(new RecyclerViewAdapter(questionList, this));
+        binding.recyclerView.setAdapter(new RecyclerViewAdapter(questionList, this));
     }
 
     private void downloadQuestions(Call<Questions> questionsCall) {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
         questionsCall.enqueue(new Callback<Questions>() {
             @Override
             public void onResponse(Call<Questions> call, Response<Questions> response) {
@@ -69,11 +68,11 @@ public class RecyclerViewFragment extends Fragment implements Constants.Listener
                     return;
                 if (response.isSuccessful()) {
                     questionList.addAll(response.body().items);
-                    (recyclerView.getAdapter()).notifyDataSetChanged();
+                    (binding.recyclerView.getAdapter()).notifyDataSetChanged();
                 } else {
                     // error response, no access to resource?
                 }
-                progressBar.setVisibility(View.GONE);
+                binding.progressBar.setVisibility(View.GONE);
 
             }
 
@@ -81,7 +80,7 @@ public class RecyclerViewFragment extends Fragment implements Constants.Listener
             public void onFailure(Call<Questions> call, Throwable t) {
                 if (getActivity() == null)
                     return;
-                progressBar.setVisibility(View.GONE);
+                binding.progressBar.setVisibility(View.GONE);
             }
         });
     }

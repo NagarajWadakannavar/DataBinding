@@ -5,6 +5,6 @@ package com.example.databinding.utils;
  */
 public class Utility {
     public static String getString() {
-        return "Hello";
+        return "This text is set by calling a static method of class from XML";
     }
 }

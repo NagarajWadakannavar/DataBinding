@@ -1,7 +1,7 @@
 <layout>
 
     <data>
-
+<import type="com.example.databinding.utils.Utility"></import>
         <variable
             name="user"
             type="com.example.databinding.model.User"></variable>
@@ -33,7 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@{user.lastName}" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@{Utility.getString}" />
         <EditText
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
